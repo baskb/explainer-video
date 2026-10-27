@@ -1,0 +1,9 @@
+{
+  "_note": "Settings of this film. Every script reads this file. languages[0] is the spoken language (subtitles timed per word); other languages get subtitles from script/subtitles-<lang>.json (timed per sentence).",
+  "title": "Example film",
+  "output": "out/example-film",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "languages": ["en", "nl"]
+}

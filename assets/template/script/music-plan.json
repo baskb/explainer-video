@@ -1,0 +1,10 @@
+{
+  "_note": "Music follows the story. 'style': pad (held chords, calm, for serious or reflective films) or a / b / c (major key with a soft beat: a = light 100 bpm, b = more drive 112 bpm, c = calm marimba 92 bpm). 'sections': from which scene a mood starts. Pad moods: calm, grey, tense, thin, bright. Beat styles use only 'thin' (no beat, quieter) versus any other mood (full beat). The last seconds always end on one resolved chord. 'pulse' adds a low growing pulse (tension) between two scenes; 'shimmer' adds soft high notes. Scene ids or 'end'.",
+  "style": "pad",
+  "sections": [
+    { "from": "s00", "mood": "calm" },
+    { "from": "s01", "mood": "bright" }
+  ],
+  "pulse": [],
+  "shimmer": [{ "from": "s01", "to": "end" }]
+}

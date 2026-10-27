@@ -1,0 +1,12 @@
+{
+  "_note": "All spoken text. One entry per clip; id = scene id + letter (s02a, s02b). A clip is one to three sentences. Split a clip where you need a pause you control. 'pronounce' gives the voice another spelling for a word; subtitles keep the written word. 'samples' are the voices --samples makes for the person to choose from.",
+  "narrator": "en-US-AvaNeural",
+  "narratorRate": "+5%",
+  "pronounce": {},
+  "samples": ["en-US-AvaNeural", "en-US-EmmaNeural", "en-GB-SoniaNeural", "en-US-AndrewNeural", "en-US-BrianNeural"],
+  "lines": [
+    { "id": "s01a", "voice": "narrator", "text": "This is an example scene, built entirely from code." },
+    { "id": "s01b", "voice": "narrator", "text": "Each card appears on the word that names it: script, voice, and pictures." },
+    { "id": "s99a", "voice": "narrator", "text": "Replace this text with your own story." }
+  ]
+}

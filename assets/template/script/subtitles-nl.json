@@ -1,0 +1,6 @@
+{
+  "_note": "Subtitle text for one extra language (file name subtitles-<lang>.json, language listed in film.json). One entry per spoken sentence of each clip, in the same order. ' | ' marks a chosen line break; without it lines are split automatically. An empty string lets the sentence before it stay on screen longer.",
+  "s01a": ["Dit is een voorbeeldscène, volledig gemaakt met code."],
+  "s01b": ["Elke kaart verschijnt op het woord | dat haar noemt: script, stem en beeld."],
+  "s99a": ["Vervang deze tekst door je eigen verhaal."]
+}

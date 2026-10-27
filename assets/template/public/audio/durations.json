@@ -1,0 +1,186 @@
+{
+  "s01a": {
+    "voice": "en-US-AvaNeural",
+    "duration": 3.576,
+    "sentences": [
+      {
+        "text": "This is an example scene, built entirely from code.",
+        "start": 0.1,
+        "end": 3.624
+      }
+    ],
+    "words": [
+      {
+        "text": "This",
+        "start": 0.1,
+        "end": 0.326
+      },
+      {
+        "text": "is",
+        "start": 0.338,
+        "end": 0.433
+      },
+      {
+        "text": "an",
+        "start": 0.445,
+        "end": 0.516
+      },
+      {
+        "text": "example",
+        "start": 0.529,
+        "end": 0.969
+      },
+      {
+        "text": "scene",
+        "start": 0.981,
+        "end": 1.35
+      },
+      {
+        "text": "built",
+        "start": 1.636,
+        "end": 1.85
+      },
+      {
+        "text": "entirely",
+        "start": 1.874,
+        "end": 2.612
+      },
+      {
+        "text": "from",
+        "start": 2.624,
+        "end": 2.838
+      },
+      {
+        "text": "code",
+        "start": 2.85,
+        "end": 3.231
+      }
+    ]
+  },
+  "s01b": {
+    "voice": "en-US-AvaNeural",
+    "duration": 5.088,
+    "sentences": [
+      {
+        "text": "Each card appears on the word that names it: script, voice, and pictures.",
+        "start": 0.1,
+        "end": 5.136
+      }
+    ],
+    "words": [
+      {
+        "text": "Each",
+        "start": 0.1,
+        "end": 0.386
+      },
+      {
+        "text": "card",
+        "start": 0.398,
+        "end": 0.731
+      },
+      {
+        "text": "appears",
+        "start": 0.743,
+        "end": 1.148
+      },
+      {
+        "text": "on",
+        "start": 1.16,
+        "end": 1.243
+      },
+      {
+        "text": "the",
+        "start": 1.255,
+        "end": 1.35
+      },
+      {
+        "text": "word",
+        "start": 1.362,
+        "end": 1.576
+      },
+      {
+        "text": "that",
+        "start": 1.588,
+        "end": 1.731
+      },
+      {
+        "text": "names",
+        "start": 1.743,
+        "end": 2.029
+      },
+      {
+        "text": "it",
+        "start": 2.04,
+        "end": 2.207
+      },
+      {
+        "text": "script",
+        "start": 2.66,
+        "end": 3.112
+      },
+      {
+        "text": "voice",
+        "start": 3.421,
+        "end": 3.814
+      },
+      {
+        "text": "and",
+        "start": 3.838,
+        "end": 4.136
+      },
+      {
+        "text": "pictures",
+        "start": 4.148,
+        "end": 4.743
+      }
+    ]
+  },
+  "s99a": {
+    "voice": "en-US-AvaNeural",
+    "duration": 2.424,
+    "sentences": [
+      {
+        "text": "Replace this text with your own story.",
+        "start": 0.1,
+        "end": 2.469
+      }
+    ],
+    "words": [
+      {
+        "text": "Replace",
+        "start": 0.1,
+        "end": 0.576
+      },
+      {
+        "text": "this",
+        "start": 0.588,
+        "end": 0.79
+      },
+      {
+        "text": "text",
+        "start": 0.802,
+        "end": 1.135
+      },
+      {
+        "text": "with",
+        "start": 1.148,
+        "end": 1.255
+      },
+      {
+        "text": "your",
+        "start": 1.267,
+        "end": 1.398
+      },
+      {
+        "text": "own",
+        "start": 1.41,
+        "end": 1.577
+      },
+      {
+        "text": "story",
+        "start": 1.588,
+        "end": 2.076
+      }
+    ]
+  }
+}

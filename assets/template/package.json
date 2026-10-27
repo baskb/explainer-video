@@ -1,0 +1,32 @@
+{
+  "name": "explainer-film",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Animated explainer video made with Remotion: voice first, scenes in code, generated music, subtitle files.",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "voice": "python script/make-voice.py",
+    "audio": "python script/make-audio.py",
+    "times": "node script/times.mjs",
+    "stills": "node script/stills.mjs",
+    "render": "remotion render src/index.ts Film out/render-raw.mp4 && node script/finish.mjs",
+    "finish": "node script/finish.mjs",
+    "subs": "node script/build-subtitles.mjs",
+    "check": "python script/check-sync.py"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.530",
+    "@remotion/cli": "4.0.530",
+    "@remotion/google-fonts": "4.0.530",
+    "@remotion/renderer": "4.0.530",
+    "@remotion/transitions": "4.0.530",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.530"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "7.0.2"
+  }
+}
