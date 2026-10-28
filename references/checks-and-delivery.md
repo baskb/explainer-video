@@ -10,7 +10,7 @@ Frames count from the start of the scene; `npm run times` shows scene lengths in
 
 ## Render and finish
 
-`npm run render` renders `out/render-raw.mp4` (H.264, CRF 18), sets the loudness (-16 LUFS, true peak -1.5 dB), writes `<output>.mp4` from `film.json`, builds the subtitles and prints length, size, frame rate and loudness. A five-minute film takes about 5 minutes on a fast desktop, 10 to 15 minutes on a laptop. `out/render-raw.mp4` can be deleted afterwards.
+`npm run render` renders `out/render-raw.mp4` (H.264, CRF 18), sets the loudness (-16 LUFS, true peak -1.5 dB), writes `<output>.mp4` from `film.json`, builds the subtitles and prints length, size, frame rate, loudness and the time it took. A film of two to three minutes took about 2.5 minutes on a laptop; a five-minute film takes about 5 minutes on a fast desktop, 10 to 15 minutes on a laptop. `out/render-raw.mp4` can be deleted afterwards. For subtitles in the picture and a smaller copy, run `npm run burn` next (see `references/subtitles.md`).
 
 ## Checks on the finished file
 
@@ -20,6 +20,8 @@ Frames count from the start of the scene; `npm run times` shows scene lengths in
 | Voice where the timing says (and so the subtitles) | `npm run check` | about +0.04 s for every clip (the delay of the audio format); more than 0.1 s is an error |
 | Subtitle lines | `awk 'length>42' out/*.vtt out/*.srt` | prints nothing |
 | Motion | `npm run stills -- "Film:100,105,110,115"` around a fast movement | smooth steps, nothing jumps |
+| The finished file itself | `ffmpeg -ss 36.8 -i out/<name>.mp4 -frames:v 1 still.png` at a few busy moments | nothing cut off, text readable (also in the smaller copy) |
+| Subtitles in the picture | `npm run burn -- --test <seconds>` at the scene with the lowest picture | the box does not touch the picture |
 | Other films unchanged (several films in one project) | `md5sum -c out/checksums/before.md5` | all OK |
 
 Report what was checked and what was not. If something was not checked, say so.

@@ -9,6 +9,8 @@ Remotion turns React code into video. A scene is a function that gets the curren
 | `src/timing.ts` | Order and length of the scenes, voice clips per scene, transitions. The only place for timing. |
 | `src/scenes/S01Name.tsx` | One file per scene, listed in `src/scenes/index.ts` under its id. |
 | `src/parts/` | Parts used by more than one scene of this film (a wall of tiles, a roadmap, a crowd). Write these before the scenes. |
+| `src/components/drawings.tsx` | `DocPage`, `FilmStrip`, `Terminal`, `Browser`, `FileCard`, `DrawLine`: drawings that most films need, in the brand colours. |
+| `src/components/screenshot.tsx` | `ShotWindow`, `ShotImage`, `Mark`, `Pin`, `Pointer`, `CodeChip`, crops: real screenshots in a scene (see `references/screenshots.md`). |
 | `src/components/` | `Background`, `kit.tsx` (Kicker, Headline, Card, Bullet, Badge, Counter), `Icon` (about 50 line icons on a 24 grid: mail, check, doc, folder, lock, users, user, warning, database, search, calendar, chart, gantt, ship, spark, bolt, history, shield, bulb, building, gear, phone, grid, chat, scale, euro, layers, send, wave, clock, attach, arrowRight, mobile, cloud, satellite, pause, refresh, wifiOff, key, cube, flag, target, hub, server, link, cross, plus, question, eye, compass), `Sfx`. |
 | `src/anim.ts` | `prog(frame, start, dur)` 0 to 1 with ease-out; `pop(frame, fps, start)` a spring; `fadeUp`, `fadeInOut`, `typed` (text that types itself), `lerp`, `s(seconds)` to frames. |
 | `src/brand/` | `theme.ts` (colours `C`, `FONT`), `Logo.tsx`. |
@@ -42,6 +44,7 @@ Scene spec in `timing.ts`:
 
 - One thing changes at a time, on the word that names it. Everything else holds still.
 - A scene must be readable without sound: the `Kicker` names the subject, the key sentence or number is on screen. Many people watch without sound.
+- With subtitles burned into the picture, keep the lowest 130 px of every scene free; check one still with `npm run burn -- --test <seconds>` at the tightest scene.
 - Text is at least 18 px at 1080p, mostly 22 to 30 px for labels and 56 to 76 px for headlines. At most two lines. Give boxes room: text running past a card edge was the most common fix.
 - Labels name what the viewer sees, short. The voice explains; the screen shows.
 - The same thing looks the same in every scene (same component, same colour, same place).

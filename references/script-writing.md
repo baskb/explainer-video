@@ -5,6 +5,7 @@ The script is the thing to review. Changing a fact in the script costs a minute;
 ## Input you may get
 
 - **A finished script.** Ask whether it must be read word for word or may be shortened. Keep sentences the author marks as important word for word. Improve only what the rules below require, and list every change in the README under "Differences from the script".
+- **A product's own README or website.** Its tone is written for the eye and often loose ("writing a novel in the chat box", "the magic words"). Take the facts and the order of the scenarios from it, not the wording; the voice-over follows the rules below.
 - **A document or a few lines about the subject** (a design document, an impact assessment, a policy, a product page). Write the script yourself from it. Use the terms of the document as they are on that day, round numbers the way the document does, and write down which document and which revision the film follows. A film is as correct as its sources on the day it was made.
 - **An earlier film to renew.** Read its subtitles (`.vtt`) next to the new sources, sentence by sentence. Keep what it got right; a renewed film easily loses a fact that the old one had.
 
@@ -33,9 +34,8 @@ End the file with "Notes for the build" (sources per fact, what was shortened an
 
 ## Length
 
-- The narrator (Ava at +5%) reads about 150 to 157 words per minute.
-- A film is about 1.15 times the speech, plus the title page. 600 words of voice-over gives about 4:30.
-- Measure before building: run `npm run voice` on the script and look at the printed total. Shorten then, when nothing is built yet.
+- The narrator (Ava at +5%) reads about 175 to 180 words per minute in clips of one or two sentences. 400 words of voice-over gave a film of 2:46 with 12 scenes; 290 words gave 2:07 with 11 scenes.
+- Measure before the review: run `npm run voice`, write a first `SPECS` in `src/timing.ts` (scene minimums, clips, gaps, tails) and run `npm run times`. That prints the real length; in two films it matched the finished film within half a second. Shorten then, when nothing is built yet.
 - Agree a maximum length at the start. Every feedback round tends to make a film longer. Keep a list of sentences that can be cut.
 
 ## Rules for the voice-over
@@ -43,7 +43,7 @@ End the file with "Notes for the build" (sources per fact, what was shortened an
 - **Do not read what the screen shows.** A list of names on screen needs one sentence about what the list means, not the list. This often cuts a script by a fifth without losing a message.
 - **Short sentences, plain words, no metaphors.** The computer voice reads exactly what is written. Write numbers as they should be spoken ("forty-two" or "42" both work; "14 July 2026" is read correctly).
 - **Write for the ear.** "An HR system" (letters are spoken), not "A HR system". Explain an abbreviation once ("CRM, the customer relationship management system").
-- **Counts come from the source, and what is said is what is shown.** A voice that says "sixteen principles" while the screen shows ten, or items marked at random instead of the ones in the source list, will be noticed. Take every number and every marked item from the source file.
+- **Counts come from the source, and what is said is what is shown.** A number from the source ("eleven small things wrong") only goes into the voice when the screen shows that many; otherwise leave the number out. A voice that says "sixteen principles" while the screen shows ten, or items marked at random instead of the ones in the source list, will be noticed. Take every number and every marked item from the source file.
 - **Check every "because".** It is tempting to give a simple reason that is wrong when the real one is too technical to explain. If the real reason is too technical, say "for technical reasons" rather than a simpler reason that is wrong.
 - **Tone.** The voice cannot be told to sound disappointed. Wording does it: "Unfortunately, the old system no longer gets updates, so problems will not be fixed." Read every sentence with each group in the audience in mind; a sentence can sound harsh to the people who run the current system. Name the cause, not the people.
 - **No real names of people**, unless the person asks. Show people by role. Product names as plain text, no product logos.

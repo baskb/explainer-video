@@ -12,7 +12,7 @@ The film is written as code with [Remotion](https://www.remotion.dev): every sce
 
 - Claude Code.
 - Node.js 20 or newer.
-- ffmpeg and ffprobe on the PATH.
+- ffmpeg and ffprobe on the PATH, a full build (with libass, to burn subtitles into the picture).
 - Python 3 with two packages: `pip install edge-tts numpy`.
 - An internet connection (for the voices, the fonts and the first download of Chrome that Remotion uses to render).
 
@@ -48,6 +48,8 @@ Claude cannot hear sound. It makes samples of voices, pronunciations and music s
 - `references/`: detailed notes per step (script writing, brand, scenes and motion, audio, subtitles, checks and delivery, lessons learned).
 - `assets/template/`: a working Remotion project with a short example film, copied for every new film.
 - `scripts/extract-brand.py`: collects colours, fonts and logo files from a website.
+
+The template also has `npm run shoot` for sharp screenshots of a website (with the browser Remotion already uses; `npm install` adds `puppeteer-core`, which downloads no browser of its own) and `npm run burn` to put the subtitles into the picture for players that start muted.
 
 ## Good to know
 

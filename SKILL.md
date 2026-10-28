@@ -27,7 +27,8 @@ Ask only what the input does not answer, in one round (use the question tool wit
 4. Subtitle languages [the spoken language plus the audience's own language].
 5. Company website for colours, font and logo, or brand files.
 6. If a script is supplied: read word for word, or may it be shortened? If a document is supplied: which parts matter most?
-7. Real material the audience will recognise (screenshots, diagrams, real names of systems) [illustrated pictures, no real names of people].
+7. Real material the audience will recognise (screenshots, diagrams, real names of systems) [illustrated pictures, no real names of people]. For a website or web app, offer real screenshots: `npm run shoot` takes them (step 5).
+8. Where the film will be shown [an intranet, Teams or Stream: separate subtitle files]. If the player starts muted or cannot load subtitle files (a web page, a social media post), burn the subtitles into the picture; if the place has a size limit, also make a smaller copy (step 8). This changes the scenes: with burned-in subtitles every scene keeps the lowest band free.
 
 Then work without further questions until the script is ready for review.
 
@@ -39,9 +40,11 @@ Copy `assets/template/` to a new folder with a short path (Windows cannot start 
 cp -r <skill>/assets/template "<projects>/<film-name>" && cd "<projects>/<film-name>" && npm install
 ```
 
-Needs Node.js 20+, ffmpeg with ffprobe on the PATH, Python 3 with `pip install edge-tts numpy`, and an internet connection (voices, fonts, first-time Chrome download). On Linux or macOS without a `python` command, make a virtual environment (`python3 -m venv .venv && .venv/bin/pip install edge-tts numpy`) and run the Python scripts with `.venv/bin/python`. Set `title` and `output` in `film.json`. Then run the example once: `npm run voice && npm run audio && npm run times`. The example film now works; `npm run studio` plays it in the browser, and `npm run stills` can show a title page with the new brand.
+Needs Node.js 20+, ffmpeg with ffprobe on the PATH (a full build, which can burn subtitles), Python 3 with `pip install edge-tts numpy`, and an internet connection (voices, fonts, first-time Chrome download). On Linux or macOS without a `python` command, make a virtual environment (`python3 -m venv .venv && .venv/bin/pip install edge-tts numpy`) and run the Python scripts with `.venv/bin/python`. Set `title` and `output` in `film.json`. Then run the example once: `npm run voice && npm run audio && npm run times`. The example film now works; `npm run studio` plays it in the browser, and `npm run stills` can show a title page with the new brand.
 
-Project layout: `film.json` (settings), `script/` (spoken text, subtitle text, music plan, the tools), `src/timing.ts` (scene order and lengths), `src/scenes/` (one file per scene), `src/parts/` (parts shared by scenes), `src/components/` (background, cards, icons, sounds), `src/brand/` (colours, font, logo), `public/` (logo files, audio), `out/` (video, subtitles, stills).
+For a second film in the style of an earlier one, copy that project instead, without `node_modules/`, `out/` and `public/audio/`, then `npm install`. Remove its scenes from `src/scenes/` and `src/scenes/index.ts`, `src/parts/` that belong to the old story, `public/shots/` (keep an `index.json` with `{}`), `script/subtitles-*.json` and the old script file; copy `public/audio/durations.json` from the template; rewrite `voiceover.json`, `SPECS` in `src/timing.ts`, the texts of `S00Title.tsx` and `S99End.tsx`, and `title`, `output` and `languages` in `film.json`. The brand, fonts and shared drawings carry over.
+
+Project layout: `film.json` (settings), `script/` (spoken text, subtitle text, music plan, the tools), `src/timing.ts` (scene order and lengths), `src/scenes/` (one file per scene), `src/parts/` (parts shared by scenes), `src/components/` (background, cards, icons, sounds, drawings, screenshots), `src/brand/` (colours, font, logo), `public/` (logo files, audio, screenshots), `out/` (video, subtitles, stills).
 
 ## Step 2: brand from the website
 
@@ -51,7 +54,7 @@ Project layout: `film.json` (settings), `script/` (spoken text, subtitle text, m
 
 Write or improve the script per scene (what is seen, text on screen, voice-over, key sentences), with a title page, a short opening the audience recognises, one idea per scene in the middle, and a closing that gives the message or decision time. Read `references/script-writing.md` before writing; it holds the rules that came out of feedback on earlier films (do not read what the screen shows, counts from the source, check every reason, tone through wording).
 
-Split the voice-over into clips in `script/voiceover.json` (`s02a`, `s02b`, …), run `npm run voice`, and check the printed total against the maximum length (film ≈ 1.15 × speech + title page). Shorten now if needed.
+Split the voice-over into clips in `script/voiceover.json` (`s02a`, `s02b`, …) and run `npm run voice`. Then write a first `SPECS` in `src/timing.ts` (step 4) and run `npm run times`: that prints the real film length, with the pauses and the title page. Check it against the maximum length and shorten now if needed. A rule of thumb is not good enough here: in short clips the narrator reads about 175 words per minute.
 
 **Show the script and the measured length to the person and wait for approval.** This is the cheapest moment for changes.
 
@@ -63,6 +66,9 @@ Split the voice-over into clips in `script/voiceover.json` (`s02a`, `s02b`, …)
 
 ## Step 5: scenes
 
+- For real screenshots of a website or app: write `script/shots.json` and run `npm run shoot`, then show them with `components/screenshot.tsx`. Read `references/screenshots.md`.
+- With subtitles in the picture (question 8), keep the lowest 130 px of every scene free of text and pictures.
+- Ready drawings for documents, film strips, terminal and browser windows and file cards are in `components/drawings.tsx`.
 - Decide the shared parts first (a picture that returns or continues across a hard cut) and write them in `src/parts/`.
 - Write one file per scene in `src/scenes/`, register it in `src/scenes/index.ts`. Start from `S01Example.tsx`: `prog`/`pop` from `anim.ts`, building blocks from `components/kit.tsx`, and every appearance timed with `clipFrame`, `sentenceFrame` or `wordFrame` from `timing.ts`, a few frames before the word.
 - Change the texts of `S00Title.tsx` and `S99End.tsx` (to rename `s99`, change it in every file that names it: `timing.ts`, `scenes/index.ts`, `voiceover.json`, the subtitle files and the `clipFrame` calls in `S99End.tsx`).
@@ -78,18 +84,21 @@ Fill `script/music-plan.json` (style and the mood per part of the story), then `
 
 Write `script/subtitles-<lang>.json` for every extra language (one entry per spoken sentence). The spoken language needs no file. Read `references/subtitles.md`.
 
+If the subtitles go into the picture (question 8), they are burned in after the render (step 8); the spoken language needs no extra file for that.
+
 ## Step 8: render and check
 
-- `npm run render`: video, loudness (-16 LUFS, peak -1.5 dB), subtitles, and a printed summary.
+- `npm run render`: video, loudness (-16 LUFS, peak -1.5 dB), subtitles, and a printed summary with the time the render took.
 - `npm run check`: every voice clip within 0.1 s of its place (about +0.04 s is normal).
 - `awk 'length>42' out/*.vtt out/*.srt` prints nothing.
-- A few stills of the finished film around fast motion.
+- A few stills of the finished film around fast motion, taken from the MP4 itself: they show faults that scene stills miss.
+- Subtitles in the picture (question 8): `npm run burn -- --test 30` for one still to check the style, then `npm run burn` writes `<name>-subtitled.mp4`; `npm run burn -- --web 1280` also writes a smaller `<name>-web.mp4` and prints both sizes.
 
 Read `references/checks-and-delivery.md`.
 
 ## Step 9: deliver
 
-- The video `out/<name>.mp4`, the subtitle files (`.vtt`, `.srt`, `.<lang>.vtt`, `.<lang>.srt`), the script file, and a README written during the work (template in `references/checks-and-delivery.md`).
+- The video `out/<name>.mp4` (and the subtitled and smaller copies if made), the subtitle files (`.vtt`, `.srt`, `.<lang>.vtt`, `.<lang>.srt`), the script file, and a README written during the work (template in `references/checks-and-delivery.md`).
 - Tell the person what to watch and listen for (the parts you could not judge: pronunciation, tone, music), what is example content, and what to check before the film goes outside the company.
 - Process feedback rounds as described in the same reference. Ask for feedback per point with the time in the video.
 
@@ -107,6 +116,7 @@ Read `references/checks-and-delivery.md`.
 | `references/brand-from-website.md` | setting colours, font and logo |
 | `references/scenes-and-motion.md` | writing scenes: timing API, transitions, readability, style |
 | `references/audio.md` | voices, pronunciation, music styles and moods, sounds |
-| `references/subtitles.md` | subtitle rules and other languages |
+| `references/subtitles.md` | subtitle rules, other languages, subtitles in the picture |
+| `references/screenshots.md` | real screenshots of a website or app: taking them, showing them, privacy |
 | `references/checks-and-delivery.md` | stills, render, checks, README, feedback rounds, several films in one project |
 | `references/lessons.md` | what went wrong in earlier films and what the skill does about it |

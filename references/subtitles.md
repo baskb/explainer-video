@@ -9,6 +9,16 @@
 - **Good break points.** The splitter tries every way to break a sentence and prefers breaks after a comma or before words like "and", "with", "because", and avoids ending a line on "the", "a", "our". English, Dutch, German and French lists are in `script/build-subtitles.mjs`; add a language by adding its two lists.
 - **Separate files, not burned into the picture.** `.vtt` (web players, Stream, SharePoint, PowerPoint) and `.srt` (other players). The viewer can switch them off, and a translation can be added later without a new render.
 
+## Subtitles in the picture
+
+Separate files are best where the player can load them. Some places cannot: a player that starts muted and has no subtitle menu, a web page, a social media post. There the film must read without sound, so the subtitles of the spoken language go into the picture.
+
+- Ask where the film will be shown in step 0. With burned-in subtitles, every scene keeps the lowest 130 px free.
+- After `npm run render`: `npm run burn -- --test 30` makes one still to check the style at a busy scene; `npm run burn` writes `out/<name>-subtitled.mp4` (same quality), and `-- --web 1280` also writes `out/<name>-web.mp4`, smaller, for a place with a size limit, and prints both sizes. Raise `--crf` (default 25) if the file is still too large. `--lang nl` burns in another language from its `.srt`.
+- The style is light text on a semi-transparent dark box, one line, low in the picture. It uses an installed font (Segoe UI Semibold on Windows, Helvetica Neue on macOS, DejaVu Sans on Linux; `--font` for another), because ffmpeg cannot use the film's web font. Say so in the README.
+- ffmpeg must be a full build with libass; the script stops with a clear message if it is not. On Windows it runs inside `out/`, because the colon of a drive letter breaks the subtitle filter.
+- Keep the clean MP4 and the subtitle files as well: they are still the best version for an intranet, Teams or Stream.
+
 ## Other languages
 
 - Add the language to `languages` in `film.json` and write `script/subtitles-<lang>.json`: per clip id, one entry per spoken sentence, in the same order. The script stops with a clear message if a clip has the wrong number of sentences.

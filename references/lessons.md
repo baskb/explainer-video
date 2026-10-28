@@ -26,4 +26,12 @@ Each problem below happened at least once while making films this way. The answe
 | Earlier work must not change | Several films share one project and a change in one touches another. | Checksums before and after; backup before a large feedback round. |
 | Write the README during the work | The next person, or the next model, has nothing to start from. | README sections as in `checks-and-delivery.md`. |
 | Feedback in writing, with times | Feedback given in a conversation is hard to process point by point. | Ask for a document with "0:45, scene 3: …" per point. |
+| Stills from the finished file | Scene stills were clean, but in the finished film a stamp was cut off by a page edge while it landed. | Take stills from the MP4 itself at the busy moments. |
+| A product README is not a script | Its loose tone ("the magic words") and its counts ("eleven small things") went into a draft voice-over. | Take facts and order from it; write the voice-over to the rules; say a count only when the screen shows it. |
+| Soft screenshots | Screenshots from the browser extension are about 1000 px wide: soft at 1080p. A desktop page squeezed into a drawn phone was cut off. | `npm run shoot`: twice the window size, a real phone width for phones. |
+| Old screenshots in a project folder | Existing screenshots showed a client document, a personal photo and a browser profile. | Take new ones of a demo page; look at every picture before it goes into a film. |
+| Muted players | A player that starts muted and cannot load subtitle files shows a film nobody can follow. | Ask where the film will be shown; burn the subtitles in (`npm run burn`) and keep the lowest band free. |
+| A respelled word broke a sentence | With "PPF" read as "P P F", the voice service missed the sentence end after it; the end card lost its second sentence. | `make-voice.py` rebuilds the sentences from the word timings when that happens. |
+| A second film in the same style | Starting again from the template meant setting the brand again. | Copy the earlier film without its scenes and audio; SKILL.md step 1 lists what to reset. |
+| Length by rule of thumb | 150 words per minute gave a length that was too short. | Measure with a first `SPECS` and `npm run times` before the review. |
 | Windows path length | In a very deep folder, the downloaded Chrome cannot start (path over 260 characters). | Keep the project folder path short. |
