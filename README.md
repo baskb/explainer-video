@@ -1,5 +1,9 @@
 # Explainer video skill for Claude Code
 
+https://github.com/user-attachments/assets/a391b5cf-31be-47b0-b7a8-19242b82c074
+
+This 2-minute film about the skill was made with the skill itself, in one working session: script, voice-over, music, scenes and English and Dutch subtitles.
+
 A skill for [Claude Code](https://claude.com/claude-code) that makes a finished animated explainer video from a script or from a document about the subject. The result is an MP4 (1920x1080, usually 3 to 5 minutes) in the colours, font and logo of a company website, with a computer voice-over, generated music and sounds, and subtitle files in one or more languages.
 
 The film is written as code with [Remotion](https://www.remotion.dev): every scene is a small React component, and every movement is timed on the spoken words. That makes changes after feedback quick: change a sentence, make that one voice clip again, render.
