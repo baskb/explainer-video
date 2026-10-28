@@ -1,5 +1,5 @@
 import React from "react";
-import { C, FONT, SHADOW } from "../brand/theme";
+import { C, DISPLAY, DISPLAY_WEIGHT, FONT, SHADOW } from "../brand/theme";
 import { Icon, IconName } from "./Icon";
 
 // Building blocks for scenes. Each takes a progress value `p` (0 = not there,
@@ -14,9 +14,9 @@ export const Kicker: React.FC<{ text: string; p?: number }> = ({ text, p = 1 }) 
   </div>
 );
 
-/** A large headline; `strong` is the part in the accent colour. */
+/** A large headline in the display font; `strong` is the part in the accent colour. */
 export const Headline: React.FC<{ text: string; strong?: string; p?: number; size?: number; style?: React.CSSProperties }> = ({ text, strong, p = 1, size = 64, style }) => (
-  <div style={{ fontFamily: FONT, fontSize: size, fontWeight: 800, lineHeight: 1.12, color: C.text, opacity: p, transform: `translateY(${(1 - p) * 24}px)`, ...style }}>
+  <div style={{ fontFamily: DISPLAY, fontSize: size, fontWeight: DISPLAY_WEIGHT, lineHeight: 1.12, color: C.text, opacity: p, transform: `translateY(${(1 - p) * 24}px)`, ...style }}>
     {text} {strong ? <span style={{ color: C.accent }}>{strong}</span> : null}
   </div>
 );
@@ -96,7 +96,7 @@ export const Badge: React.FC<{ label: string; icon?: IconName; colour?: string; 
         padding: "8px 18px",
         borderRadius: 999,
         background: colour,
-        color: "#fff",
+        color: C.onAccent,
         fontSize: 20,
         fontWeight: 700,
         whiteSpace: "nowrap",
@@ -107,7 +107,7 @@ export const Badge: React.FC<{ label: string; icon?: IconName; colour?: string; 
         ...style,
       }}
     >
-      {icon ? <Icon name={icon} size={20} colour="#fff" stroke={2.4} /> : null}
+      {icon ? <Icon name={icon} size={20} colour={C.onAccent} stroke={2.4} /> : null}
       {label}
     </div>
   );
@@ -115,7 +115,7 @@ export const Badge: React.FC<{ label: string; icon?: IconName; colour?: string; 
 
 /** A number that counts up from 0 to `to` as `p` goes from 0 to 1. */
 export const Counter: React.FC<{ to: number; p: number; suffix?: string; size?: number; colour?: string; style?: React.CSSProperties }> = ({ to, p, suffix = "", size = 96, colour = C.accent, style }) => (
-  <span style={{ fontFamily: FONT, fontSize: size, fontWeight: 900, color: colour, fontVariantNumeric: "tabular-nums", ...style }}>
+  <span style={{ fontFamily: DISPLAY, fontSize: size, fontWeight: DISPLAY_WEIGHT === 800 ? 900 : DISPLAY_WEIGHT, color: colour, fontVariantNumeric: "tabular-nums", ...style }}>
     {Math.round(to * Math.max(0, Math.min(1, p))).toLocaleString("en-US")}
     {suffix}
   </span>

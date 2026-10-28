@@ -9,10 +9,13 @@
     "audio": "python script/make-audio.py",
     "times": "node script/times.mjs",
     "stills": "node script/stills.mjs",
+    "prerender": "node script/render-start.mjs",
     "render": "remotion render src/index.ts Film out/render-raw.mp4 && node script/finish.mjs",
     "finish": "node script/finish.mjs",
     "subs": "node script/build-subtitles.mjs",
-    "check": "python script/check-sync.py"
+    "check": "python script/check-sync.py",
+    "burn": "node script/burn-subs.mjs",
+    "shoot": "node script/shoot.mjs"
   },
   "dependencies": {
     "@remotion/bundler": "4.0.530",
@@ -27,6 +30,7 @@
   "devDependencies": {
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
+    "puppeteer-core": "23.11.1",
     "typescript": "7.0.2"
   }
 }

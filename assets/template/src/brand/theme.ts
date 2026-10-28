@@ -5,6 +5,15 @@
 import { loadFont } from "@remotion/google-fonts/Inter";
 
 export const { fontFamily: FONT } = loadFont("normal", { weights: ["300", "400", "500", "700", "900"], subsets: ["latin"] });
+// Headlines and big numbers. Most brands use the body font with a heavy weight.
+// A brand with a separate display font that has one weight (for example Bebas Neue):
+//   import { loadFont as loadDisplay } from "@remotion/google-fonts/BebasNeue";
+//   export const { fontFamily: DISPLAY } = loadDisplay("normal", { weights: ["400"], subsets: ["latin"] });
+// and set DISPLAY_WEIGHT to 400, so the browser never makes up a bold version.
+export const DISPLAY = FONT;
+export const DISPLAY_WEIGHT = 800;
+// Terminal text, file names, code and web addresses.
+export const MONO = "ui-monospace, 'Cascadia Mono', Consolas, 'SF Mono', Menlo, monospace";
 
 export const C = {
   // Background of most scenes (dark), from deep to light for the gradient.
@@ -25,9 +34,13 @@ export const C = {
   bad: "#e5484d",
   // Text and lines on the dark background.
   text: "#ffffff",
+  // Text on a filled accent shape (badges, buttons). Use a dark colour when the accent is light.
+  onAccent: "#ffffff",
   textMuted: "rgba(255,255,255,0.72)",
   line: "rgba(255,255,255,0.18)",
   card: "rgba(10, 34, 72, 0.92)",
 } as const;
 
 export const SHADOW = "0 20px 50px rgba(0,0,0,0.35)";
+/** A soft glow in the accent colour, for windows and drawings that should stand out. */
+export const GLOW = `0 0 28px ${C.accent}2e, ${SHADOW}`;

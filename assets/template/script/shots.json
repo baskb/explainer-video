@@ -1,0 +1,4 @@
+{
+  "_note": "Screenshots for npm run shoot. Each sequence opens one page (url; width and height of the window in CSS px, default 1440 x 900; or \"phone\": true for 390 x 716 as a phone) and runs its steps in order. Steps: {\"wait\": ms}, {\"key\": \"p\"}, {\"type\": \"text\"}, {\"hover\": \"css selector\"}, {\"click\": \"css selector\", \"count\": 2, \"dx\": 0, \"dy\": 0}, {\"hide\": \"selector\"}, {\"show\": \"selector\"}, {\"eval\": \"javascript that returns something to print\"}, {\"shot\": \"name\"} (saves public/shots/name.png). Example: {\"url\": \"http://localhost:5173/\", \"steps\": [{\"shot\": \"home\"}, {\"click\": \"h1\"}, {\"shot\": \"home-clicked\"}]}. 'language' (optional) overrides the page language; default is the spoken language from film.json.",
+  "sequences": []
+}

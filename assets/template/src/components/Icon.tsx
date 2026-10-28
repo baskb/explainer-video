@@ -9,6 +9,7 @@ const PATHS: Record<string, React.ReactNode> = {
     </>
   ),
   check: <path d="M5 12.5 10 17.5 19 7.5" />,
+  play: <path d="M8 5.5v13l10.5-6.5z" />,
   doc: (
     <>
       <path d="M6 3h8l4 4v14H6z" />
