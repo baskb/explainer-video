@@ -132,6 +132,35 @@ def written_words(items: list[dict], pronounce: dict) -> list[dict]:
     return items
 
 
+SENTENCE_END = re.compile(r"(?<=[.!?])\s+(?=[A-Z0-9\"“'])")
+
+
+def tokens(text: str) -> list[str]:
+    """Words as the voice service counts them: split on spaces, punctuation removed."""
+    return [t for t in (re.sub(r"[^\w'’-]", "", w) for w in text.split()) if t]
+
+
+def sentences_from_words(written: str, spoken: str, sentences: list[dict], words: list[dict]) -> list[dict]:
+    """The service sometimes misses a sentence end, for example after a respelled
+    word that ends in single letters ("say P P F. Feedback ..."). When the written
+    text has more sentences than the service returned, the sentences are rebuilt
+    from the word timings. Only when the words line up exactly; otherwise the
+    service's sentences are kept and a warning is printed."""
+    written_parts = SENTENCE_END.split(written.strip())
+    spoken_parts = SENTENCE_END.split(spoken.strip())
+    if len(written_parts) <= len(sentences) or not words:
+        return sentences
+    counts = [len(tokens(p)) for p in spoken_parts]
+    if len(spoken_parts) != len(written_parts) or sum(counts) != len(words):
+        print(f"  warning: {len(written_parts)} sentences written but {len(sentences)} timed; could not split them by words")
+        return sentences
+    out, k = [], 0
+    for text, n in zip(written_parts, counts):
+        out.append({"text": text, "start": words[k]["start"], "end": words[k + n - 1]["end"]})
+        k += n
+    return out
+
+
 def voice_of(cfg: dict, line: dict) -> tuple[str, str]:
     if line.get("voice", "narrator") == "narrator":
         return cfg["narrator"], cfg.get("narratorRate", "+0%")
@@ -186,6 +215,7 @@ async def main() -> None:
             sentences = written_words(await speak(text, voice, rate, mp3), pronounce)
             result[lid] = {"voice": voice, "duration": clip_length(mp3), "sentences": sentences}
         result[lid]["words"] = written_words(await word_timings(text, voice, rate, mp3), pronounce)
+        result[lid]["sentences"] = sentences_from_words(line["text"], text, result[lid]["sentences"], result[lid]["words"])
         print(f"{lid:6} {result[lid]['duration']:6.2f}s  {voice}  {len(result[lid]['words'])} words")
     durations_file.write_text(json.dumps(result, indent=2), encoding="utf-8")
     total = sum(v["duration"] for v in result.values())
