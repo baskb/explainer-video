@@ -57,3 +57,7 @@ The template also has `npm run shoot` for sharp screenshots of a website (with t
 - The voice uses `edge-tts`, which calls the free read-aloud service of Microsoft Edge. That is fine for trying things out and for internal films. For a public or production film, use the same voices through Azure AI Speech, or a human voice.
 - The music and sounds are generated from code, so there are no licence questions about them.
 - Logos, colours and fonts taken from a website belong to that company. Check their brand rules before a film is shown outside the company.
+
+## License
+
+MIT, see [LICENSE](LICENSE). This covers the skill itself (the steps, references, template code and scripts). Remotion, the voices and anything taken from a company website have their own terms, listed under "Good to know".
